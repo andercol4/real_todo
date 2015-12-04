@@ -1,2 +1,13 @@
 <h1>List of Lists</h1>
-<%= @lists.each do |list| %>
+<% if @lists.any? %>
+  <%= @lists.each do |list| %>
+    <ul>
+      <li><%= link_to "list- #{list.name}", list_path(list) %> </li>
+      <%= link_to "edit", edit_list_path(list) %>
+      <%= link_to "delete", list_path(list.id), method: :delete %>
+    </ul>
+  <% end %>
+<% else %>
+  <h3>No lists to choose from</h3>
+<% end %>
+<%= button_to 'New List', new_list_path, method: :get %>

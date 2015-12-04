@@ -1,0 +1,17 @@
+<% binding.pry %>
+<%= form_for @item, :url => list_items_path, method: :post do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br />
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br />
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+  <br />
+  <%= f.label :priority %>
+  <%= f.select :priority, (1.. 100) %>
+  <%= f.hidden_field :list_id, :value => params[:list_id] %>
+  <br />
+  <%= f.submit %>
+<% end %>

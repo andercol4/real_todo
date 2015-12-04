@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'lists#index'
-  
-  resources :items
-  resources :lists
+
+  resources :lists do 
+    resources :items
+  end
 end

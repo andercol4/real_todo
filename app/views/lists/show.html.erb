@@ -1,2 +1,14 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<h1><%= @list.name %></h1>
+
+<% if @items.any? %>
+  <%= @items.each do |item| %>
+    <ol>
+      <li>
+        <%= link_to item.name, list_items_path(item) %>
+      </li>
+    </ol>
+  <% end %>
+  <% else %>
+  <h3>No items on the list</h3>
+<% end %>
+<%= link_to 'New Item', new_list_item_path(@list.id)%>
